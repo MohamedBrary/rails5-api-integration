@@ -5,19 +5,25 @@ class ScheduleItemsController < ApplicationController
   def index
     # start the API call to request the schedule
     begin
+      # prepare params
     	filter_params = proper_date_filters
     	auth_params = current_driver_session.auth_header_hash
+      
+      # call the API
       response = request_schedule(filter_params, auth_params)
+      
       if (response[:success])
       	# call is successful, and list of items are returned
     		@schedule = Schedule.new response[:items_hash]
-	    	if @schedule.valid?
+	    	
+        if @schedule.valid?
 	    		@schedule.calculate_availability_stats
 	    	elsif !@schedule.has_valid_items?
 	    		# scheduled items are corrupted
 	    		errors = @schedule.errors.full_messages.map{|e| "#{e} ."}.first
 	    		flash.now[:error] = "Erros Occured: #{errors}"
 	    	end
+
     	else
     		flash.now[:error] = response[:error]
     	end
