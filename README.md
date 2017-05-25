@@ -9,12 +9,6 @@ This rails project demonstrates simple integeration with a third party API, with
 * Simple token based authentication with API
 * Rspec and Capybara automated testing, and test coverage for key features
 
-#### Take a look:
-
-This application is deployed on [Heroku](https://joggy.herokuapp.com), use these credentials to login as an admin user:
-* Email: 'admin@joggy.com'
-* Password: 'password'
-
 ***
 
 _To see the steps used creating this app, checkout out this [gist](https://gist.github.com/MohamedBrary/12465abb009d5dbeadeb8cde9adb30b5)._
