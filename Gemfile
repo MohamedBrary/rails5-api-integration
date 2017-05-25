@@ -59,3 +59,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 gem 'bootstrap-generators' # to generate views using bootstrap
 
+# to call third party APIs
+gem 'httparty'
