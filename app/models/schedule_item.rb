@@ -36,25 +36,29 @@ class ScheduleItem
     end
   end
 
-  def initialize(item_json='')
-    from_json item_json
-  end
-
-  def from_json item_json
-  end
-
   # -- Calculations
 
   def calculate_availability
   	@transfer_availablity = duration( @transfer_available_from,
   	 @transfer_available_to)
+    
   	@request_availablity = duration( @request_available_from,
-  	 @request_available_to)  	
+  	 @request_available_to)
+
+    self # for chaining
   end
 
   # -- Util
-  # TODO move to helpers, and enhance
+
+  def transfer_availablity_s
+    "#{@transfer_available_from} - #{@transfer_available_to}"
+  end
   
+   def request_availablity_s 
+    "#{@request_available_from} - #{@request_available_to}"
+  end
+
+  # TODO move to helpers, and enhance  
   def to_time time_string
   	hrs, mins = time_string.split(':')
   	Time.now.change({ hour: hrs.to_i, min: mins.to_i})

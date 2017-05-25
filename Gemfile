@@ -55,6 +55,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+
 # gems for views
 gem 'haml-rails'
 gem 'bootstrap-generators' # to generate views using bootstrap
