@@ -44,7 +44,7 @@ RSpec.describe ScheduleItemsController, type: :controller do
 
       expect(schedule.present?).to be true
       expect(schedule.valid?).to be true
-      
+
       # make sure that schedule data are built correctly
       expect(schedule.items.present?).to be true
       expect(schedule.items.size).to be > 0
