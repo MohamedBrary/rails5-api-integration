@@ -1,20 +1,22 @@
-# README
+## Sample Rails 5 Application
 
-This README contains information about the application.
+This rails project demonstrates simple integeration with a third party API, without having local database. Follow this link for more sample [Rails 5 applications](https://github.com/MohamedBrary?tab=repositories).
 
-* Ruby and Rails versions
+#### Main components:
 
-```
-ruby '2.4.1'
-rails '5.1.1'
-```
+* API adapter wrapping integeration with the third party logic
+* Tableless models to wrap remote resources logic and attributes
+* Simple token based authentication with API
+* Rspec and Capybara automated testing, and test coverage for key features
 
-* Steps to create
+#### Take a look:
 
-```
-rvm use --create 2.4.1@welcome_test 
-gem install rails 
-rails new welcome_test -T --skip-active-record
-cd welcome_test
-git init
-```
+This application is deployed on [Heroku](https://joggy.herokuapp.com), use these credentials to login as an admin user:
+* Email: 'admin@joggy.com'
+* Password: 'password'
+
+***
+
+_To see the steps used creating this app, checkout out this [gist](https://gist.github.com/MohamedBrary/12465abb009d5dbeadeb8cde9adb30b5)._
+
+For a full featured Rails 5 starter application with *React* integeration check this [Github Repository](https://github.com/MohamedBrary/rails_starter_react).
