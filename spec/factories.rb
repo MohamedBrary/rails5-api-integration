@@ -39,6 +39,11 @@ FactoryGirl.define do
 
     email
     password 'password'
-  end # of driver factory
+
+    trait 'as_auth_resource' do
+      token '1aMdXpWH7vsbUwfcXnjr'
+      attempt_counter 1      
+    end
+  end # of driver factory  
 
 end # of FactoryGirl

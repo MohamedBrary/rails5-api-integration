@@ -13,7 +13,7 @@ class ScheduleItemsController < ApplicationController
     		@schedule = Schedule.new response[:items_hash]
 	    	if @schedule.valid?
 	    		@schedule.calculate_availability_stats
-	    	else
+	    	elsif !@schedule.has_valid_items?
 	    		# scheduled items are corrupted
 	    		errors = @schedule.errors.full_messages.map{|e| "#{e} ."}.first
 	    		flash.now[:error] = "Erros Occured: #{errors}"
@@ -23,11 +23,7 @@ class ScheduleItemsController < ApplicationController
     	end
     rescue WelcomePickupsAdapter::WelcomePickupsException => e
       # something went wrong with the call
-      flash.now[:error] = e.message
-    # rescue Exception => e
-    # 	# TODO bad practice, handle other cases from API cases
-    #   # something went wrong and wasn't handled
-    #   flash.now[:error] = e.message
+      flash.now[:error] = e.message    
     end
   end
 
@@ -38,6 +34,9 @@ class ScheduleItemsController < ApplicationController
   	params[:from] = proper_date_or_nil(params[:from]) || 16.months.ago.to_date
   	params[:to] = proper_date_or_nil(params[:to]) || Date.today
 
+    # swap dates if 'from' is after 'to'
+    params[:from], params[:to] = params[:to], params[:from] if params[:to] < params[:from]
+    
   	{ from_date: params[:from].strftime('%F'),
   	  to_date: params[:to].strftime('%F') }
   end

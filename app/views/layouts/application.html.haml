@@ -6,7 +6,7 @@
     %meta{content: "width=device-width, initial-scale=1", name: "viewport"}
     %meta{content: "", name: "description"}
     %meta{content: "", name: "author"}
-    %title Welcome Pickups Ruby Test
+    %title Rails 5 API Integeration Sample
 
     / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
     /[if lt IE 9]
@@ -24,7 +24,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to "Welcome Ruby Test", "", class: "navbar-brand"
+          = link_to "Home", root_path, class: "navbar-brand"
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav            
             %li
@@ -38,6 +38,10 @@
                   = current_driver_session.email
               %li                
                 = link_to('Logout', logout_path, :method => :delete)
+            - else
+              %li                
+                = link_to('Login', login_path)
+
     .container
       - flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{name == :error || name == 'error' ? "danger" : "success" } alert-dismissable", role: "alert" do

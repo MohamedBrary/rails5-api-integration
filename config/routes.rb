@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
 	get '/driver_sessions/new', to: 'driver_sessions#new'	
 	get '/login', to: 'driver_sessions#new'
 	
@@ -10,5 +12,5 @@ Rails.application.routes.draw do
 
 	get '/dashboard', to: 'schedule_items#index'
 
-	root 'driver_sessions#new'
+	root 'home#index'
 end
